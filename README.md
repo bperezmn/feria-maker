@@ -39,6 +39,15 @@ No se copió (errores del documento): «Pototipo» → Prototipo; «Conceptualiz
 «concurso: no obstante» → «concurso; no obstante»; «sencillo, guíate» → «sencillo; guíate»; «p. ej:» → «p. ej.:»;
 «Te esperamos!» → «¡Te esperamos!»; se conservaron los puntos finales que faltan en el documento (pasos 3 y 10, bases, Creatividad).
 
+## Correcciones de textos (3 oct 2026)
+Tabla de cambios del cliente, aplicada tal cual:
+- Portada: «¡Participa en la quinta edición!» y botón «Revive los mejores momentos de la edición pasada.» (cortado en «momentos / de la edición pasada» para que quepa en el botón).
+- Franja verde: «Identidad» → «Agenda de futuro»; se quitó «Interdisciplinariedad» (sigue en Categorías); «Make something Better» → «Make it Better» (también en el título de la categoría).
+- Asiste: se quitó el saludo «Querida directora, querido director:».
+- Mecánica, forma 2: «Cada colegio podrá estar representado por un proyecto, ya sea de primaria alta o de secundaria.» y botón «Participa en la Expo: conoce las bases.»
+- Mecánica, nota: «Fiel al espíritu…» y «convocatorias especiales con los proyectos…» (el resto igual); «(colegios afiliados, …)» con minúscula.
+- Calendario: paso 1 «17:00 h»; paso 3 «elegir el proyecto».
+
 ## Efectos agregados (2 oct 2026)
 - **Intro**: el globo del logo (`img/intro-trazo.webp`, sacado de LOGO_MAKER) se dibuja y se abre la página. Solo la primera visita; para verla otra vez: `index.html?intro`.
 - **Cuenta regresiva** bajo el botón de la portada (`sitio.js`): al Kick Off (15 oct 2026, 17 h) y luego a la Feria (24 abr 2027, 10 h), hora del centro (UTC−6). Ese día dice «¡Hoy es la Feria Maker!» y a las 18 h desaparece.

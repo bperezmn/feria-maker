@@ -47,7 +47,7 @@
     });
   });
 
-  // «Revive los mejores momentos del año pasado»: baja al video y lo empieza a reproducir.
+  // «Revive los mejores momentos de la edición pasada»: baja al video y lo empieza a reproducir.
   const video = document.querySelector('#video video');
   document.querySelectorAll('a[href="#video"]').forEach((a) => a.addEventListener('click', () => {
     if (video) setTimeout(() => { const p = video.play(); if (p) p.catch(() => {}); }, 600);
