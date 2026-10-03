@@ -11,14 +11,14 @@ Sitio estático (HTML + CSS + un poco de JS), fiel al diseño `landing_maker 1.p
 - Las imágenes de `img/` salen de los insumos del cliente: logo (LOGO_MAKER), fondo (FONDO_MAKER), íconos 1-13 calendario, 14-16 áreas, 17-24 categorías.
 - Los botones del cliente (BOTON_1-4) se hicieron en HTML con el mismo texto y forma (no como imagen): así se leen nítidos, se adaptan al celular y los lectores de pantalla los entienden.
 
-Registro de visitantes (Mecánica, tarjeta 1): formulario de Google https://forms.gle/6UDmHjvu25Tv6WfJ6, se abre en otra pestaña.
+Formularios de Google (se abren en otra pestaña): registro de visitantes (Mecánica, tarjeta 1) https://forms.gle/6UDmHjvu25Tv6WfJ6;
+registro de proyectos (Bases, paso 3) https://forms.gle/rQUYWWpw6s9PaGNcA.
 
 Ver en local: abrir `index.html` en el navegador (las letras vienen de Google Fonts, necesita internet).
 `.nojekyll` evita que GitHub Pages procese el sitio con Jekyll: se publica tal cual.
 
 ## Pendientes (insumos)
-Los enlaces sin liga llevan `data-pendiente` y, al hacer clic, avisan en lugar de saltar.
-- Liga del formulario de registro de proyectos (Bases, paso 3).
+Si algún enlace se queda sin liga, ponle `data-pendiente="…"` y, al hacer clic, avisa en lugar de saltar (`sitio.js`). Hoy ninguno lo usa.
 - Nombre del hotel con tarifa preferencial (Calendario, paso 8: dice «Hotel (por confirmar)»).
 - Letra Objectivity: poner los `.woff2` en `fuentes/` y activar los `@font-face` al inicio de `estilos.css` (mientras, Lexend).
 
