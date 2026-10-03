@@ -12,6 +12,7 @@ Sitio estático (HTML + CSS + un poco de JS), fiel al diseño `landing_maker 1.p
 - Los botones del cliente (BOTON_1-4) se hicieron en HTML con el mismo texto y forma (no como imagen): así se leen nítidos, se adaptan al celular y los lectores de pantalla los entienden.
 
 Ver en local: abrir `index.html` en el navegador (las letras vienen de Google Fonts, necesita internet).
+`.nojekyll` evita que GitHub Pages procese el sitio con Jekyll: se publica tal cual.
 
 ## Pendientes (insumos)
 Los enlaces sin liga llevan `data-pendiente` y, al hacer clic, avisan en lugar de saltar.
