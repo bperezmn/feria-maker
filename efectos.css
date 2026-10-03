@@ -1,0 +1,186 @@
+/* Feria Maker UNOi 2027 · efectos (se cargan después de estilos.css y no cambian el acomodo: solo cómo aparecen
+   y reaccionan las cosas). Sin brincos: todo entra y se mueve con curvas suaves. Con «reducir movimiento» del sistema
+   no corre nada de esto y la página se ve quieta, igual al diseño.
+   html.fx lo pone un script en el <head> (solo si el sistema no pide reducir movimiento). */
+
+:root {
+  --suave: cubic-bezier(0.2, 0.7, 0.2, 1);    /* entra rápido y se asienta despacio */
+  --seda: cubic-bezier(0.45, 0, 0.25, 1);     /* ida y vuelta pareja */
+}
+
+/* ---------- 1. Portada que se enciende ---------- */
+/* Capas de la portada, de atrás hacia delante: fondo (::before) · luz del plano (barrido y linterna) · halo del logo · contenido. */
+.portada-contenido { z-index: 2; }
+@media (max-width: 1180px) { .portada-contenido { position: relative; } }
+
+/* Halo: un resplandor lima detrás del logo que «respira» despacio. JS lo pone donde está el logo (--halo-*). */
+.portada::after {
+  content: ""; position: absolute; z-index: 1; pointer-events: none;
+  left: var(--halo-x, 5vw); top: var(--halo-y, 5vw); width: var(--halo-w, 47vw); height: var(--halo-h, 47vw);
+  background: radial-gradient(closest-side, rgba(132, 195, 65, 0.34), rgba(132, 195, 65, 0.12) 55%, transparent 76%);
+  opacity: 0; transform: scale(0.94);
+}
+.fx .portada::after { animation: halo-aparece 1.8s var(--suave) 0.5s forwards, halo-respira 7s var(--seda) 2.3s infinite alternate; }
+@keyframes halo-aparece { to { opacity: 0.85; transform: scale(1); } }
+@keyframes halo-respira { from { opacity: 0.85; transform: scale(1); } to { opacity: 0.45; transform: scale(1.05); } }
+
+/* Entrada: el plano se ilumina, el logo se enfoca y el título y el botón suben suave, uno tras otro. */
+.fx .portada.plano::before { animation: plano-enciende 1.8s var(--seda) both; }
+@keyframes plano-enciende { from { opacity: 0.15; } to { opacity: 1; } }
+.fx .portada-logo { animation: logo-enciende 1.6s var(--suave) 0.25s both; }
+@keyframes logo-enciende { from { opacity: 0; transform: scale(0.94); filter: blur(10px) brightness(0.6); } to { opacity: 1; transform: none; filter: none; } }
+.fx .portada h1 .linea { display: inline-block; animation: linea-sube 1.1s var(--suave) both; }
+.fx .portada h1 .linea:nth-of-type(1) { animation-delay: 0.85s; }
+.fx .portada h1 .linea:nth-of-type(2) { animation-delay: 1s; }
+@keyframes linea-sube { from { opacity: 0; transform: translateY(0.45em); clip-path: inset(0 0 100% 0); } to { opacity: 1; transform: none; clip-path: inset(0 0 -20% 0); } }
+.fx .portada .boton { animation: boton-sube 1s var(--suave) 1.3s both; }
+.fx .portada .cuenta { animation: boton-sube 1s var(--suave) 1.55s both; }
+.fx .cuenta-num.cambia { animation: cifra-cambia 0.45s var(--suave); }
+@keyframes cifra-cambia { from { opacity: 0.15; translate: 0 -0.22em; } to { opacity: 1; translate: 0 0; } }
+@keyframes boton-sube { from { opacity: 0; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
+
+/* Logo vivo: video de solo luz mezclado «en pantalla» sobre el logo (lo negro no se ve). JS lo pone sobre el logo. */
+.logo-luz { position: absolute; z-index: 3; left: 0; top: 0; width: 1px; aspect-ratio: 1; height: auto; pointer-events: none; mix-blend-mode: screen; opacity: 0;
+  transition: opacity 1.8s var(--seda); -webkit-mask-image: radial-gradient(closest-side, #000 86%, transparent 100%); mask-image: radial-gradient(closest-side, #000 86%, transparent 100%); }
+.logo-luz.encendida { opacity: 0.92; }
+
+/* Barrido de luz por el plano de la portada (al entrar y luego cada tanto). Una «ventana» que se desliza
+   y, dentro, las líneas del plano en lima, alineadas con el fondo (se mueven al revés que la ventana). */
+.barrido { position: absolute; z-index: 1; top: 0; left: 0; width: 34%; height: 100%; pointer-events: none; overflow: hidden; opacity: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%, #000 55%, transparent); mask-image: linear-gradient(90deg, transparent, #000 45%, #000 55%, transparent); }
+.barrido > i { position: absolute; top: 0; left: 0; width: var(--sw, 100vw); height: 100%; translate: 0 var(--py, 0px); background: url(img/portada-luz.webp?v=1) center top / cover no-repeat; }
+/* la ventana va de izquierda a derecha y lo de adentro al revés, con el mismo ritmo: las líneas quedan quietas sobre el fondo */
+.barrido.pasa { animation: barrido-op var(--dur, 3.4s) linear both, barrido-va var(--dur, 3.4s) var(--seda) both; }
+.barrido.pasa > i { animation: barrido-vuelve var(--dur, 3.4s) var(--seda) both; }
+@keyframes barrido-op { 0% { opacity: 0; } 18%, 78% { opacity: 0.6; } 100% { opacity: 0; } }
+@keyframes barrido-va { from { transform: translateX(calc(-1 * var(--bw, 34vw))); } to { transform: translateX(var(--sw, 100vw)); } }
+@keyframes barrido-vuelve { from { transform: translateX(var(--bw, 34vw)); } to { transform: translateX(calc(-1 * var(--sw, 100vw))); } }
+@media (max-width: 760px) { .barrido > i { background-image: url(img/portada-luz-movil.webp?v=1); } }
+
+/* ---------- 2. Aparecer al bajar ---------- */
+/* JS marca con .revelar lo que está abajo y le pone .visible cuando entra en pantalla (una sola vez). */
+.revelar { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--suave), transform 0.9s var(--suave); transition-delay: var(--retraso, 0s); }
+.revelar.visible { opacity: 1; transform: none; }
+/* Títulos: suben desde detrás de una línea, como al destapar */
+h2.revelar { transform: translateY(0.35em); clip-path: inset(0 0 100% 0); transition: opacity 1s var(--suave), transform 1s var(--suave), clip-path 1.1s var(--suave); }
+h2.revelar.visible { clip-path: inset(-10% -5% -25% -5%); }
+/* Video, mapa y círculos de categorías: además se acercan un poco */
+.video.revelar, .mapa.revelar { transform: translateY(28px) scale(0.97); }
+.video.revelar.visible, .mapa.revelar.visible { transform: none; }
+/* Fichas 1 y 2: un aro lima que se abre una vez al aparecer */
+.forma.visible .ficha { animation: aro 1.6s var(--suave) calc(var(--retraso, 0s) + 0.4s) both; }
+@keyframes aro { from { box-shadow: var(--sombra-boton), 0 0 0 0 rgba(132, 195, 65, 0.7); } to { box-shadow: var(--sombra-boton), 0 0 0 18px rgba(132, 195, 65, 0); } }
+/* Al terminar de aparecer, ya no se queda la transición (no estorba al efecto 3D del mouse) */
+.revelar.listo { transition: none; }
+
+/* Calendario: una línea de plano une los 13 pasos y se va pintando de lima conforme bajas; cada paso al que llega se enciende. */
+.pasos { position: relative; }
+.pasos > .paso { z-index: 1; }
+.ruta-pasos { position: absolute; left: 0; top: 0; z-index: 0; overflow: visible; pointer-events: none; }
+.ruta-pasos path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.ruta-base { stroke: rgba(34, 80, 57, 0.28); stroke-width: 2; stroke-dasharray: 6 8; }
+.ruta-brillo { stroke: rgba(132, 195, 65, 0.28); stroke-width: 12; }
+.ruta-lima { stroke: var(--lima); stroke-width: 3.5; }
+.paso { transition: box-shadow 0.8s var(--suave), opacity 0.9s var(--suave), transform 0.9s var(--suave); }
+.paso .paso-num { transition: color 0.6s var(--suave), text-shadow 0.6s var(--suave); }
+.paso.encendido { box-shadow: var(--sombra), 0 0 0 2px rgba(132, 195, 65, 0.75), 0 14px 34px -12px rgba(132, 195, 65, 0.7); }
+.paso.encendido .paso-num { color: #4f9f2c; text-shadow: 0 0 18px rgba(132, 195, 65, 0.55); }
+.paso--inicio.encendido .paso-num { color: var(--verde-noche); text-shadow: none; }
+
+/* ---------- 3. Al pasar el mouse ---------- */
+/* Tarjetas: se elevan y se inclinan un poco hacia el mouse (JS pone --rx, --ry y la posición del brillo --gx, --gy). */
+.inclina { transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--sube, 0px)); transition: transform 0.5s var(--suave), box-shadow 0.5s var(--suave); transform-style: preserve-3d; }
+.inclina.sobre { --sube: -6px; transition: transform 0.15s linear, box-shadow 0.5s var(--suave); box-shadow: 10px 22px 38px -10px rgba(0, 0, 0, 0.35); }
+.inclina::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.5s var(--suave);
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgba(132, 195, 65, 0.14), rgba(132, 195, 65, 0) 60%), radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 45%); }
+.inclina.sobre::after { opacity: 1; }
+.paso.inclina.encendido.sobre { box-shadow: 10px 22px 38px -10px rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(132, 195, 65, 0.75); }
+
+/* Íconos 3D: flotan muy despacio (cada uno a su ritmo) y al pasar el mouse giran un poco y se acercan. */
+.fx .paso img, .fx .area img, .fx .cat-circulo img { animation: flota 6s var(--seda) var(--flota-retraso, 0s) infinite alternate; transition: rotate 0.6s var(--suave), scale 0.6s var(--suave); }
+@keyframes flota { from { translate: 0 0; } to { translate: 0 -6px; } }
+/* Íconos vivos: la animación trae 8 % de margen por lado; esto la deja del mismo tamaño que el ícono fijo. */
+.paso img.vivo, .area img.vivo, .cat-circulo img.vivo { transform: scale(1.16); }
+.paso.sobre img, .area.sobre img { rotate: -6deg; scale: 1.08; }
+.cat-circulo { transition: background-color 0.5s var(--suave), box-shadow 0.5s var(--suave), transform 0.5s var(--suave); }
+.cat:hover .cat-circulo { background-color: #e2f3cf; box-shadow: 0 0 0 3px rgba(132, 195, 65, 0.55), 0 16px 34px -14px rgba(59, 133, 56, 0.6); transform: translateY(-4px); }
+.cat:hover .cat-circulo img { rotate: -6deg; scale: 1.1; }
+
+/* Botones: un destello de luz que los cruza al pasar el mouse (y una vez cuando aparecen). */
+.boton { overflow: hidden; isolation: isolate; }
+.boton:not(.boton--plano) { position: relative; }
+@media (max-width: 1180px) { .portada .boton { position: relative; } }
+.boton::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; transform: translateX(-130%);
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 48%, rgba(255, 255, 255, 0.15) 56%, transparent 70%); }
+.boton:hover::after, .boton:focus-visible::after, .boton.destello::after { transform: translateX(130%); transition: transform 0.9s var(--seda); }
+.boton--lima::after { background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.7) 48%, rgba(255, 255, 255, 0.2) 56%, transparent 70%); }
+
+/* Menú: una rayita lima que crece al pasar el mouse (pantallas grandes) */
+@media (min-width: 1181px) {
+  .nav a { position: relative; }
+  .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -0.45vw; height: 2px; border-radius: 2px; background: var(--lima); transform: scaleX(0); transition: transform 0.4s var(--suave); }
+  .nav a:hover::after, .nav a[aria-current="true"]::after { transform: scaleX(1); }
+  .nav li:first-child a::after { left: 2.08vw; }
+}
+
+/* Mapa: se acerca un poco al pasar el mouse (con todo y pin) */
+.mapa-lienzo { transition: transform 1.2s var(--suave); }
+.mapa:hover .mapa-lienzo { transform: scale(1.04); }
+/* Pin de la sede: dos ondas que salen de la punta del marcador, una tras otra; la etiqueta aparece con el mapa. */
+.fx .pin-sede i { animation: pin-onda 2.6s var(--suave) infinite; }
+.fx .pin-sede i + i { animation-delay: 1.3s; }
+@keyframes pin-onda { from { opacity: 0.95; transform: scale(0.15); } 70% { opacity: 0.25; } to { opacity: 0; transform: scale(1.25); } }
+.fx .mapa.revelar:not(.visible) .pin-etiqueta { opacity: 0; }
+.fx .mapa.visible .pin-etiqueta { animation: etiqueta-sale 0.9s var(--suave) 0.8s both; }
+@keyframes etiqueta-sale { from { opacity: 0; translate: -10px -50%; } to { opacity: 1; translate: 0 -50%; } }
+
+/* ---------- 4. Fondo y menú vivos ---------- */
+/* Profundidad: el dibujo de planos se desplaza más lento que la página (JS pone --py en cada sección oscura). */
+.fx .plano { overflow: hidden; }
+.fx .plano:not(.portada)::before { inset: -40px 0; }
+.fx .plano::before { transform: translate3d(0, var(--py, 0px), 0); will-change: transform; }
+
+/* Linterna: una luz suave sigue al mouse por las secciones oscuras y enciende las líneas del plano en lima. */
+.linterna { position: absolute; z-index: 1; left: 0; top: 0; width: var(--lr2, 640px); height: var(--lr2, 640px); pointer-events: none; overflow: hidden; border-radius: 50%; opacity: 0;
+  transform: translate3d(var(--lx, -999px), var(--ly, -999px), 0); transition: opacity 0.6s var(--suave);
+  -webkit-mask-image: radial-gradient(closest-side, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 100%); mask-image: radial-gradient(closest-side, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 100%); }
+.linterna.encendida { opacity: 0.75; }
+.linterna > i { position: absolute; left: 0; top: var(--lt, -40px); width: var(--sw, 100vw); height: var(--sh, 100%); transform: translate3d(calc(-1 * var(--lx, 0px)), calc(var(--py, 0px) - var(--ly, 0px)), 0);
+  background: url(img/plano-luz.webp?v=1) center / cover no-repeat; }
+.portada .linterna > i { background: url(img/portada-luz.webp?v=1) center top / cover no-repeat; }
+.mecanica > .contenedor, .areas > .contenedor, .sede > .contenedor { position: relative; z-index: 2; }
+
+/* Menú de vidrio al bajar (arriba de todo se ve igual que el diseño) */
+.nav ul, .nav-boton { transition: background-color 0.5s var(--suave), box-shadow 0.5s var(--suave); }
+.nav.vidrio ul, .nav.vidrio .nav-boton { background-color: rgba(34, 80, 57, 0.78); -webkit-backdrop-filter: blur(14px) saturate(1.5); backdrop-filter: blur(14px) saturate(1.5); box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.55); }
+@media (max-width: 1180px) { .nav.vidrio.abierto ul { background-color: rgba(34, 80, 57, 0.94); } }
+
+/* Barra de avance de lectura (arriba de la pantalla; al inicio no se ve) */
+.avance-lectura { position: fixed; z-index: 60; left: 0; top: 0; width: 100%; height: 3px; pointer-events: none; transform-origin: 0 50%; transform: scaleX(var(--leido, 0));
+  background: linear-gradient(90deg, var(--verde-numero), var(--lima)); box-shadow: 0 0 10px rgba(132, 195, 65, 0.7); }
+
+/* ---------- 5. Intro: el globo del logo se dibuja (solo la primera visita) ----------
+   El <head> pone html.intro; efectos.js coloca el trazo justo sobre el logo, lo dibuja en círculo y abre la página.
+   Mientras la capa tapa, la portada espera (sus animaciones arrancan cuando la capa se va). */
+@property --giro { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.capa-intro { display: none; }
+html.intro .capa-intro { display: block; position: fixed; inset: 0; z-index: 100; background: var(--verde-noche); cursor: pointer; transition: opacity 0.85s var(--seda); }
+html.intro-fin .capa-intro { opacity: 0; pointer-events: none; }
+.intro-trazo { position: absolute; left: var(--ix, 5vw); top: var(--iy, 5.26vw); width: var(--iw, 47.03vw); aspect-ratio: 1100 / 1121; opacity: 0;
+  background: url(img/intro-trazo.webp?v=1) center / 100% 100% no-repeat; filter: drop-shadow(0 0 5px rgba(132, 195, 65, 0.9)) drop-shadow(0 0 18px rgba(132, 195, 65, 0.45));
+  -webkit-mask-image: conic-gradient(from -90deg at 50.5% 50.85%, #000 var(--giro), transparent calc(var(--giro) + 0.5deg));
+  mask-image: conic-gradient(from -90deg at 50.5% 50.85%, #000 var(--giro), transparent calc(var(--giro) + 0.5deg)); }
+.capa-intro.lista .intro-trazo { opacity: 1; animation: intro-dibuja 1.1s var(--seda) forwards; }
+@keyframes intro-dibuja { from { --giro: 0deg; } to { --giro: 361deg; } }
+html.intro:not(.intro-fin) .portada::before, html.intro:not(.intro-fin) .portada::after, html.intro:not(.intro-fin) .portada * { animation-play-state: paused !important; }
+/* Después de la intro el logo no se encoge: solo se enfoca, justo donde quedó el dibujo. */
+.fx.con-intro .portada-logo { animation-name: logo-enfoca; animation-delay: 0s; }
+@keyframes logo-enfoca { from { opacity: 0; filter: blur(8px) brightness(1.5); } to { opacity: 1; filter: none; } }
+
+/* ---------- Movimiento reducido: todo quieto ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .revelar { opacity: 1; transform: none; clip-path: none; transition: none; }
+  .portada::after, .barrido, .linterna, .avance-lectura, .ruta-pasos, .capa-intro, .logo-luz { display: none; }
+  .inclina { transform: none; }
+  .boton::after { display: none; }
+}

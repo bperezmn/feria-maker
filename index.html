@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feria Maker UNOi 2027</title>
+<meta name="description" content="Feria Maker UNOi 2027, quinta edición: sábado 24 de abril de 2027 en el Tecnológico de Monterrey campus Ciudad de México. Mecánica de participación, calendario, categorías y bases.">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="estilos.css?v=16">
+<link rel="stylesheet" href="efectos.css?v=6">
+<script>
+(function () {
+  var d = document.documentElement;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  d.classList.add('fx');
+  // Intro (el logo se dibuja): solo la primera visita o con ?intro, y no si se llega directo a una sección.
+  try {
+    if (/[?&]intro\b/.test(location.search) || (!location.hash && !localStorage.getItem('fm-intro'))) {
+      d.classList.add('intro', 'con-intro');
+      new Image().src = 'img/intro-trazo.webp?v=1';
+      // Por si algo falla, la página nunca se queda tapada.
+      setTimeout(function () { d.classList.add('intro-fin'); }, 4000);
+      setTimeout(function () { d.classList.remove('intro'); }, 5000);
+    }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<div class="capa-intro" aria-hidden="true"><div class="intro-trazo"></div></div>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="nav" id="nav">
+  <button class="nav-boton" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+  <nav aria-label="Secciones">
+    <ul id="menu">
+      <li><a href="#inicio"><svg class="casa" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 3.5l9 7.7V21h-6.2v-6.4H9.2V21H3z"/></svg>Inicio</a></li>
+      <li><a href="#asiste">Asiste</a></li>
+      <li><a href="#participa">Participa</a></li>
+      <li><a href="#calendario">Pasos</a></li>
+      <li><a href="#sede">Sede</a></li>
+      <li><a href="#categorias">Categorías</a></li>
+      <li><a href="#bases">Bases</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="contenido" tabindex="-1">
+  <!-- Portada -->
+  <section class="portada plano" id="inicio" aria-labelledby="t-portada">
+    <div class="portada-contenido">
+      <img class="portada-logo" src="img/logo-portada.webp?v=2" srcset="img/logo-portada-movil.webp?v=2 720w, img/logo-portada.webp?v=2 1100w" sizes="(max-width: 760px) 86vw, 47vw" width="1100" height="1121" alt="Feria Maker 2027 UNOi">
+      <div class="portada-texto">
+        <h1 id="t-portada"><span class="linea">Participa en la</span><br> <span class="linea">quinta edición.</span></h1>
+        <a class="boton boton--plano" href="#video">Revive los mejores<br> momentos del año pasado.</a>
+        <!-- Cuenta regresiva: la llena sitio.js (sin JS no se muestra) -->
+        <div class="cuenta" hidden>
+          <p class="cuenta-titulo"></p>
+          <ol class="cuenta-cifras" aria-hidden="true">
+            <li><span class="cuenta-num">00</span><span class="cuenta-u">días</span></li>
+            <li><span class="cuenta-num">00</span><span class="cuenta-u">horas</span></li>
+            <li><span class="cuenta-num">00</span><span class="cuenta-u">min</span></li>
+            <li><span class="cuenta-num">00</span><span class="cuenta-u">seg</span></li>
+          </ol>
+          <p class="cuenta-fecha"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Las 8 categorías corren en la franja verde -->
+  <div class="franja">
+    <div class="franja-pista">
+      <ul aria-label="Categorías de la Cultura Maker">
+        <li>Identidad</li><li>Make something Better</li><li>Interdisciplinariedad</li><li>Creatividad</li>
+        <li>100 % Maker</li><li>Prototipo</li><li>Documentación</li><li>Conexiones</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Identidad</li><li>Make something Better</li><li>Interdisciplinariedad</li><li>Creatividad</li>
+        <li>100 % Maker</li><li>Prototipo</li><li>Documentación</li><li>Conexiones</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Identidad</li><li>Make something Better</li><li>Interdisciplinariedad</li><li>Creatividad</li>
+        <li>100 % Maker</li><li>Prototipo</li><li>Documentación</li><li>Conexiones</li>
+      </ul>
+    </div>
+    <button class="franja-pausa" type="button" aria-pressed="false"><span class="sr">Pausar el movimiento de las categorías</span></button>
+  </div>
+
+  <!-- Asiste -->
+  <section class="seccion asiste" id="asiste" aria-labelledby="t-asiste">
+    <div class="contenedor asiste-rejilla">
+      <div class="asiste-texto">
+        <h2 id="t-asiste">¿Quieres asistir a la Feria Maker? Aquí te decimos cómo:</h2>
+        <p><strong>Querida directora, querido director:</strong></p>
+        <p>La Feria Maker UNOi 2026 Make it Better, celebrada el pasado 25 de abril, fue un gran evento enfocado en fomentar la Cultura Maker que se vive en los colegios UNOi. Tal fue el resultado que varios proyectos ahí presentados fueron convocados a participar en otros certámenes de sostenibilidad e innovación.</p>
+        <p>La quinta edición se llevará a cabo el sábado 24 de abril de 2027 en la CDMX.</p>
+        <p><strong>¡Será una experiencia inolvidable!</strong></p>
+      </div>
+      <div class="video" id="video">
+        <video controls playsinline preload="metadata" width="1280" height="720">
+          <source src="video/memoria-2026.mp4#t=0.1" type="video/mp4">
+          Tu navegador no puede reproducir este video.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mecánica de participación -->
+  <section class="seccion mecanica plano" id="participa" aria-labelledby="t-mecanica">
+    <div class="contenedor">
+      <h2 id="t-mecanica" class="titulo-claro">Mecánica de participación</h2>
+      <p class="bajada">Hay dos formas de participar.</p>
+      <div class="mecanica-rejilla">
+        <article class="tarjeta forma">
+          <span class="ficha" aria-hidden="true">1</span>
+          <h3 class="sr">Forma 1: asistir como visitante</h3>
+          <p class="forma-texto">Asistir, previo registro, como visitante para disfrutar la Feria, los talleres y las conferencias.</p>
+          <a class="boton boton--lima" href="#" data-pendiente="la liga del registro de visitantes">Regístrate como visitante aquí.</a>
+        </article>
+        <article class="tarjeta forma">
+          <span class="ficha" aria-hidden="true">2</span>
+          <h3>Presentar un proyecto en la Expo de Feria Maker UNOi.</h3>
+          <p>La Expo estará abierta a alumnos de primaria alta y secundaria de la Red de colegios UNOi México.</p>
+          <p>Cada colegio podrá ser representado por un proyecto ya sea de primaria alta o secundaria.</p>
+          <a class="boton boton--lima" href="#bases">Participa en la expo. Conoce las bases.</a>
+        </article>
+        <aside class="tarjeta nota">
+          <p>En el espíritu de la Cultura Maker, la Feria no tendrá formato de concurso; no obstante, se podrán compartir convocatorias especiales a los proyectos que destaquen en una o varias de las 8 categorías Maker descritas abajo.</p>
+          <p class="importante"><strong><span>IMPORTANTE:</span> Evento exclusivo para la comunidad UNOi (Colegios afiliados, estudiantes, familias y personal).</strong></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calendario -->
+  <section class="seccion calendario" id="calendario" aria-labelledby="t-calendario">
+    <div class="contenedor">
+      <h2 id="t-calendario">Hacia la Feria Maker UNOi 2027</h2>
+      <ol class="pasos">
+        <li class="paso paso--inicio"><img src="img/paso-01.webp?v=2" alt="" width="320" height="260" loading="lazy"><span class="paso-num">1</span><p><strong>KICK OFF<br>15 de octubre, 17&nbsp;h (Tiempo del Centro). Este mismo día se publicarán las bases.</strong></p></li>
+        <li class="paso"><img src="img/paso-02.webp?v=2" alt="" width="320" height="352" loading="lazy"><span class="paso-num">2</span><p>Los colegios deberán elegir un tema de la <strong>Agenda de futuro UNOi</strong> para realizar el proyecto que presentarán.</p></li>
+        <li class="paso"><img src="img/paso-03.webp?v=2" alt="" width="320" height="264" loading="lazy"><span class="paso-num">3</span><p>Los colegios deberán hacer una <strong>preselección interna</strong> para elegir al proyecto que los representará.</p></li>
+        <li class="paso"><img src="img/paso-04.webp?v=2" alt="" width="320" height="255" loading="lazy"><span class="paso-num">4</span><p>Cada colegio podrá registrar su proyecto <strong>antes del 15 de enero de 2027</strong>.</p></li>
+        <li class="paso"><img src="img/paso-05.webp?v=2" alt="" width="320" height="258" loading="lazy"><span class="paso-num">5</span><p>Los colegios y proyectos seleccionados recibirán un correo de confirmación el <strong>12 de febrero</strong>.</p></li>
+        <li class="paso"><img src="img/paso-06.webp?v=2" alt="" width="320" height="273" loading="lazy"><span class="paso-num">6</span><p>El <strong>11 de marzo, a las 16:00&nbsp;h</strong> (Tiempo del Centro) se llevará a cabo un webinar especial para los colegios seleccionados.</p></li>
+        <li class="paso"><img src="img/paso-07.webp?v=2" alt="" width="320" height="188" loading="lazy"><span class="paso-num">7</span><p>Los equipos seleccionados <strong>viajarán por su cuenta a la Ciudad de México</strong> para participar en la Feria Maker UNOi.</p></li>
+        <li class="paso"><img src="img/paso-08.webp?v=2" alt="" width="320" height="264" loading="lazy"><span class="paso-num">8</span><p>Se contará con una tarifa preferencial en el Hotel Fiesta Americana Reforma. <strong>Reserva antes del 16 de abril.</strong></p></li>
+        <li class="paso"><img src="img/paso-09.webp?v=2" alt="" width="320" height="329" loading="lazy"><span class="paso-num">9</span><p>Durante la Feria Maker se llevarán a cabo <strong>conferencias y talleres</strong> y podrá asistir toda la comunidad educativa del colegio.</p></li>
+        <li class="paso"><img src="img/paso-10.webp?v=2" alt="" width="320" height="388" loading="lazy"><span class="paso-num">10</span><p>El <strong>23 de abril</strong> se llevará a cabo el montaje de los stands a partir de las <strong>18:15&nbsp;h</strong>.</p></li>
+        <li class="paso paso--feria"><img src="img/paso-11.webp?v=2" alt="" width="320" height="320" loading="lazy"><span class="paso-num">11</span><p>El <strong>24 de abril de 10:00 a 18:00&nbsp;h</strong> se llevará a cabo la Feria Maker UNOi 2027.</p></li>
+        <li class="paso"><img src="img/paso-12.webp?v=2" alt="" width="320" height="425" loading="lazy"><span class="paso-num">12</span><p>Una vez terminado el evento, se realizará el <strong>desmontaje</strong>.</p></li>
+        <li class="paso"><img src="img/paso-13.webp?v=2" alt="" width="299" height="443" loading="lazy"><span class="paso-num">13</span><p><strong>Regreso a casa.</strong></p></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="raya" aria-hidden="true"></div>
+
+  <!-- Áreas -->
+  <section class="seccion areas plano" id="areas" aria-labelledby="t-areas">
+    <div class="contenedor">
+      <h2 id="t-areas" class="titulo-lima">La Feria Maker UNOi contará con tres grandes áreas</h2>
+      <div class="areas-rejilla">
+        <article class="tarjeta area"><img src="img/area-exposicion.webp?v=2" alt="" width="320" height="389" loading="lazy"><h3>Área de exposición:</h3><p>La Expo contará con 120 espacios para mostrar los proyectos de primaria y secundaria de los colegios UNOi participantes.</p></article>
+        <article class="tarjeta area"><img src="img/area-conferencias.webp?v=2" alt="" width="320" height="330" loading="lazy"><h3>Área de conferencias:</h3><p>El área de conferencias ofrecerá charlas de diversa índole vinculadas a la Cultura Maker.</p><p>La lista definitiva de expositores se publicará próximamente.</p></article>
+        <article class="tarjeta area"><img src="img/area-talleres.webp?v=2" alt="" width="320" height="311" loading="lazy"><h3>Área de talleres:</h3><p>Se impartirán talleres con técnicas básicas y avanzadas de la Cultura Maker.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categorías -->
+  <section class="seccion categorias" id="categorias" aria-labelledby="t-categorias">
+    <div class="contenedor">
+      <h2 id="t-categorias">Categorías de la Cultura Maker</h2>
+      <ul class="cats">
+        <li class="cat"><span class="cat-circulo"><img src="img/cat-identidad.webp?v=2" alt="" width="420" height="559" loading="lazy"></span><h3>Identidad:</h3><p>El proyecto tiene un carácter propio y distintivo, ya sea por su aplicación local o por reflejar la identidad de su institución.</p></li>
+        <li class="cat"><span class="cat-circulo"><img src="img/cat-make-something-better.webp?v=2" alt="" width="420" height="363" loading="lazy"></span><h3>Make something Better:</h3><p>El proyecto mejora de forma evidente algo que ya existe.</p></li>
+        <li class="cat"><span class="cat-circulo"><img src="img/cat-interdisciplinariedad.webp?v=2" alt="" width="420" height="523" loading="lazy"></span><h3>Interdiscipli&shy;nariedad:</h3><p>El proyecto conecta y combina diversas disciplinas y técnicas.</p></li>
+        <li class="cat"><span class="cat-circulo"><img src="img/cat-creatividad.webp?v=2" alt="" width="420" height="462" loading="lazy"></span><h3>Creatividad:</h3><p>Destaca por su originalidad y el uso sorprendente de materiales o ideas.</p></li>
+        <li class="cat"><span class="cat-circulo"><img src="img/cat-100-maker.webp?v=2" alt="" width="420" height="437" loading="lazy"></span><h3>100 % Maker:</h3><p>Prioriza el uso de materiales reciclados, reutilizados, reimaginados sobre las partes compradas.</p></li>
+        <li class="cat"><span class="cat-circulo"><img src="img/cat-prototipo.webp?v=2" alt="" width="420" height="316" loading="lazy"></span><h3>Prototipo:</h3><p>El prototipo sobresale por la alta calidad de su fabricación y presentación.</p></li>
+        <li class="cat"><span class="cat-circulo"><img src="img/cat-documentacion.webp?v=2" alt="" width="420" height="389" loading="lazy"></span><h3>Documentación:</h3><p>Se reconoce al proyecto por registrar detalladamente sus ideas, procesos y resultados.</p></li>
+        <li class="cat"><span class="cat-circulo"><img src="img/cat-conexiones.webp?v=2" alt="" width="420" height="474" loading="lazy"></span><h3>Conexiones:</h3><p>El proyecto fomenta la interacción social entre personas e instituciones.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Bases -->
+  <section class="seccion bases" id="bases" aria-labelledby="t-bases">
+    <div class="contenedor">
+      <h2 id="t-bases">Bases de participación:</h2>
+      <div class="bases-texto">
+        <p>Podrán participar proyectos de primaria alta (4to, 5to y 6to grados) y secundaria de colegios UNOi (uno por nivel, de los cuales solo uno podrá ser seleccionado para participar).</p>
+        <p>Los equipos estarán integrados por máximo cuatro alumnos, un profesor y un Maker Xpert.</p>
+        <p>Realizar tu proyecto Maker es muy sencillo; guíate con los siguientes pasos:</p>
+      </div>
+      <ol class="etapas">
+        <li class="tarjeta etapa">
+          <h3>1. Conceptualiza:</h3>
+          <p>a. Elige un tema de la Agenda de futuro UNOi.</p>
+          <ul class="temas">
+            <li>Alimentación</li><li>Salud</li><li>Agua</li><li>Paz</li><li>Gobierno</li><li>Energía</li><li>Equidad</li><li>Cambio climático</li><li>Exploración espacial</li>
+          </ul>
+          <p>b. Identifica un problema vinculado a alguno de estos temas que quieras solucionar.</p>
+          <p>c. Piensa cómo diseñarías un objeto, dispositivo o sistema (a partir de los elementos Maker con los que cuenta tu colegio) para crear una solución viable a dicho problema.</p>
+        </li>
+        <li class="tarjeta etapa">
+          <h3>2. Escribe:</h3>
+          <p>Redacta un texto breve dividido en tres bloques (utilizarás este texto en tu forma de registro):</p>
+          <ol class="bloques" type="i">
+            <li>Menciona el tema de la Agenda que has seleccionado (p. ej.: agua).</li>
+            <li>Señala la problemática específica que buscas solucionar (p. ej.: solucionar el desperdicio de agua en los baños del colegio).</li>
+            <li>Describe detalladamente el objeto, dispositivo o sistema que crearás a partir de elementos Maker para solucionar el problema y su funcionamiento (p. ej.: Desarrollaremos un sistema de captación de agua…).</li>
+          </ol>
+        </li>
+        <li class="tarjeta etapa">
+          <h3>3. Inscribe:</h3>
+          <p>Haz clic en el botón y llena el formulario con los datos de tu proyecto.</p>
+          <a class="boton boton--oscuro" href="#" data-pendiente="la liga del formulario de registro de proyectos">Haz clic aquí.<span class="sr"> Inscribe tu proyecto</span></a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Sede -->
+  <section class="seccion sede plano" id="sede" aria-labelledby="t-sede">
+    <div class="contenedor sede-rejilla">
+      <div class="sede-texto">
+        <h2 id="t-sede" class="titulo-claro">La sede:</h2>
+        <p>Este año, la Feria Maker se llevará a cabo en las instalaciones del Tecnológico de Monterrey campus Ciudad de México:</p>
+        <address>Prol. Canal de Miramontes, Coapa, San Bartolo el Chico, Tlalpan, 14380 Ciudad de México.</address>
+        <a class="boton boton--lima" href="https://www.google.com/maps/search/?api=1&amp;query=Tecnol%C3%B3gico+de+Monterrey+campus+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener">Cómo llegar<span class="sr"> (se abre en otra pestaña)</span></a>
+      </div>
+      <a class="mapa" href="https://www.google.com/maps/search/?api=1&amp;query=Tecnol%C3%B3gico+de+Monterrey+campus+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener" aria-label="Abrir la ubicación del Tecnológico de Monterrey campus Ciudad de México en Google Maps (se abre en otra pestaña)">
+        <span class="mapa-lienzo">
+          <img src="img/mapa-sede.webp?v=2" alt="Mapa del centro de México con la ubicación del Tecnológico de Monterrey campus Ciudad de México, en Tlalpan" width="1118" height="874" loading="lazy">
+          <span class="pin-sede" aria-hidden="true"><i></i><i></i></span>
+          <span class="pin-etiqueta" aria-hidden="true">Aquí es la Feria</span>
+        </span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <p class="pie-cierre">Sé parte de esta gran experiencia. ¡Te esperamos!<br>Feria Maker UNOi 24 de abril de&nbsp;2027<br>Tecnológico de Monterrey, Ciudad de México.</p>
+  <a class="pie-aviso" href="aviso-de-privacidad.html">Avisos de Privacidad</a>
+</footer>
+
+<div class="aviso-pendiente" role="status" aria-live="polite"></div>
+<script src="sitio.js?v=5" defer></script>
+<script src="efectos.js?v=9" defer></script>
+</body>
+</html>
