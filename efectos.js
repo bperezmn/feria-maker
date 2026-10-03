@@ -124,7 +124,7 @@
     '.areas h2', '.area',
     '.categorias h2', '.cat',
     '.bases h2', '.bases-texto > p', '.etapa',
-    '.sede-texto > *', '.mapa',
+    '.sede-texto > *', '.sede-foto',
     '.pie > *',
   ];
   const INCLINAN = '.forma, .nota, .paso, .area, .etapa';
