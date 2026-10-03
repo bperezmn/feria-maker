@@ -86,8 +86,17 @@ strong { font-weight: 700; }
 .asiste-texto { display: grid; gap: 1.1em; max-width: 650px; }
 .asiste h2 { margin-bottom: 0.15em; color: #17332c; font-size: clamp(30px, 2.97vw, 57px); line-height: 1.07; }
 .asiste p { font-size: clamp(16px, 1.05vw, 20px); }
-.video { position: relative; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: var(--verde-noche); box-shadow: var(--sombra); }
-.video video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.asiste-foto { margin: 0; border-radius: 6px; overflow: hidden; background: var(--verde-noche); box-shadow: var(--sombra); }
+.asiste-foto img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+
+/* ---------- Video de la edición pasada (ventana modal) ---------- */
+/* Lo más ancho que quepa: deja lugar arriba para el botón de cerrar. */
+.modal-video { width: min(92vw, 1100px, calc((100vh - 140px) * 16 / 9)); max-width: none; max-height: none; padding: 0; border: 0; border-radius: 10px; overflow: visible; background: #000; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); }
+.modal-video::backdrop { background: rgba(12, 26, 22, 0.88); }
+.modal-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 10px; background: #000; }
+.modal-cerrar { position: absolute; right: 0; bottom: calc(100% + 12px); display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--lima); cursor: pointer; box-shadow: var(--sombra-boton); }
+.modal-cerrar::before { content: ""; width: 18px; height: 18px; background: linear-gradient(45deg, transparent 44%, var(--verde-noche) 44% 56%, transparent 56%), linear-gradient(-45deg, transparent 44%, var(--verde-noche) 44% 56%, transparent 56%); }
+html:has(.modal-video[open]) { overflow: hidden; } /* la página no se mueve detrás */
 
 /* ---------- Tarjetas ---------- */
 .tarjeta { position: relative; border-radius: clamp(26px, 2.1vw, 40px); background: var(--blanco); box-shadow: var(--sombra); }

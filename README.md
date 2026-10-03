@@ -4,10 +4,10 @@ Sitio estático (HTML + CSS + un poco de JS), fiel al diseño `landing_maker 1.p
 
 - `index.html` · contenido completo, en el orden del diseño.
 - `estilos.css` · diseño; las medidas del PDF escalan con `clamp()`.
-- `sitio.js` · menú plegable, sección activa y aviso de enlaces pendientes.
+- `sitio.js` · menú plegable, sección activa, aviso de enlaces pendientes y ventana del video.
 - `img/` · imágenes sacadas del PDF (fondo de plano, logo de portada con transparencia, íconos 3D) en WebP. La foto de la sede (`img/sede-tec*.webp`) sale de `insumos/cliente/FOTO_TEC_CCM.jpg`.
 - `insumos/` · originales extraídos del PDF (`insumos/pdf/`, con `posiciones.json`) y los insumos del cliente (`insumos/cliente/`: logo, fondo, 24 íconos y 4 botones, en PNG 4x).
-- `video/memoria-2026.mp4` · video memoria 2026 comprimido para la web (720p, H.264 + AAC) con `herramientas/comprimir_video.py` (Blender). El original pesa 388 MB.
+- `video/memoria-2026.mp4` · video memoria 2026 comprimido para la web (720p, H.264 + AAC) con `herramientas/comprimir_video.py` (Blender). El original pesa 388 MB. Se abre en una ventana (`<dialog>`) desde el botón de la portada; su portada es `img/video-portada.webp`.
 - Las imágenes de `img/` salen de los insumos del cliente: logo (LOGO_MAKER), fondo (FONDO_MAKER), íconos 1-13 calendario, 14-16 áreas, 17-24 categorías.
 - Los botones del cliente (BOTON_1-4) se hicieron en HTML con el mismo texto y forma (no como imagen): así se leen nítidos, se adaptan al celular y los lectores de pantalla los entienden.
 
@@ -62,7 +62,9 @@ Tercera tabla (filas 26-33):
 - Pie: «Feria Maker UNOi · 24 de abril de 2027» y enlace «Aviso de privacidad» (también el título de esa página).
 - Mecánica: todos los textos de las tarjetas con el mismo tamaño (`.forma, .nota` en `estilos.css`); los botones conservan el tamaño de los demás botones del sitio.
 - Sede (fila 32): la foto del Tec (`insumos/cliente/FOTO_TEC_CCM.jpg`) va en lugar del mapa, así que ya no hay pin ni etiqueta «Aquí será la Feria». «Cómo llegar» abre Google Maps con el nombre y la dirección del recinto.
-- Pendiente: «la foto que envió Vero» (fila 33).
+- Asiste (fila 33): la foto que envió Vero (`insumos/cliente/FOTO_VERO_FERIA.jpg` → `img/asiste-feria*.webp`) va en lugar del video.
+  El video ahora se abre en una ventana desde el botón «Revive los mejores momentos de la edición pasada.»: empieza a reproducirse solo,
+  se cierra con la ×, con Esc o con un clic fuera, y al cerrar se pausa. Sin JS, el botón abre el archivo de video.
 
 ## Efectos agregados (2 oct 2026)
 - **Intro**: el globo del logo (`img/intro-trazo.webp`, sacado de LOGO_MAKER) se dibuja y se abre la página. Solo la primera visita; para verla otra vez: `index.html?intro`.

@@ -47,11 +47,21 @@
     });
   });
 
-  // «Revive los mejores momentos de la edición pasada»: baja al video y lo empieza a reproducir.
-  const video = document.querySelector('#video video');
-  document.querySelectorAll('a[href="#video"]').forEach((a) => a.addEventListener('click', () => {
-    if (video) setTimeout(() => { const p = video.play(); if (p) p.catch(() => {}); }, 600);
-  }));
+  // «Revive los mejores momentos de la edición pasada»: abre el video en una ventana y lo empieza a reproducir.
+  // Se cierra con la ×, con Esc o con un clic fuera del video; al cerrar se pausa y el foco regresa al botón.
+  const modal = document.getElementById('modal-video');
+  const abreVideo = document.querySelector('[aria-controls="modal-video"]');
+  if (modal && abreVideo && typeof modal.showModal === 'function') {
+    const video = modal.querySelector('video');
+    abreVideo.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.showModal();
+      const p = video.play(); if (p) p.catch(() => {});
+    });
+    modal.querySelector('.modal-cerrar').addEventListener('click', () => modal.close());
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+    modal.addEventListener('close', () => { video.pause(); abreVideo.focus(); });
+  }
 
   // Franja de categorías: se puede pausar (y reanudar) con su botón.
   const franja = document.querySelector('.franja');

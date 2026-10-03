@@ -118,7 +118,7 @@
 
   // ---------- 2. Aparecer al bajar ----------
   const SELECTORES = [
-    '.asiste h2', '.asiste-texto > p', '.video',
+    '.asiste h2', '.asiste-texto > p', '.asiste-foto',
     '.mecanica h2', '.mecanica .bajada', '.mecanica-rejilla > *',
     '.calendario h2', '.paso',
     '.areas h2', '.area',
