@@ -68,6 +68,8 @@ Tercera tabla (filas 26-33):
   El video ahora se abre en una ventana desde el botón «Revive los mejores momentos de la edición pasada.»: empieza a reproducirse solo,
   se cierra con la ×, con Esc o con un clic fuera, y al cerrar se pausa. Sin JS, el botón abre el archivo de video.
 
+Calendario, paso 4: «a más tardar el 15 de enero de 2027 a las 23:59 h» (coincide con el cierre de registro del contador).
+
 ## Efectos agregados (2 oct 2026)
 - **Intro**: el globo del logo (`img/intro-trazo.webp`, sacado de LOGO_MAKER) se dibuja y se abre la página. Solo la primera visita; para verla otra vez: `index.html?intro`.
 - **Cuenta regresiva** bajo el botón de la portada (`sitio.js`): al Kick Off (hasta el 15 oct 2026, 17 h), luego al cierre de registro (15 ene 2027, 23:59 h) y después a la Feria (24 abr 2027, 10 h), hora del centro (UTC−6). Las metas están en `METAS`, en `sitio.js`. Ese día dice «¡Hoy es la Feria Maker!» y a las 18 h desaparece.
