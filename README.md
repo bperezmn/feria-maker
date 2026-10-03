@@ -17,6 +17,7 @@ Ver en local: abrir `index.html` en el navegador (las letras vienen de Google Fo
 Los enlaces sin liga llevan `data-pendiente` y, al hacer clic, avisan en lugar de saltar.
 - Liga del registro de visitantes (Mecánica, tarjeta 1).
 - Liga del formulario de registro de proyectos (Bases, paso 3).
+- Nombre del hotel con tarifa preferencial (Calendario, paso 8: dice «Hotel (por confirmar)»).
 - Letra Objectivity: poner los `.woff2` en `fuentes/` y activar los `@font-face` al inicio de `estilos.css` (mientras, Lexend).
 
 ## Correcciones respecto al PDF
@@ -47,6 +48,13 @@ Tabla de cambios del cliente, aplicada tal cual:
 - Mecánica, forma 2: «Cada colegio podrá estar representado por un proyecto, ya sea de primaria alta o de secundaria.» y botón «Participa en la Expo: conoce las bases.»
 - Mecánica, nota: «Fiel al espíritu…» y «convocatorias especiales con los proyectos…» (el resto igual); «(colegios afiliados, …)» con minúscula.
 - Calendario: paso 1 «17:00 h»; paso 3 «elegir el proyecto».
+
+Segunda tabla (filas 13-25):
+- Calendario: paso 6 «El 11 de marzo a las 16:00 h (Tiempo del Centro), se llevará…»; paso 8 «Hotel (por confirmar)» (se dejó «Reserva antes del 16 de abril.»); paso 9 «conferencias y talleres, y podrá…».
+- Áreas: «La lista definitiva de conferencistas…».
+- Categorías: Creatividad «El proyecto destaca…»; 100 % Maker «reciclados, reutilizados o reimaginados por encima de las piezas compradas».
+- Bases: «(4.º, 5.º y 6.º grados)»; «por un máximo de cuatro alumnos»; inciso b «relacionado con el tema que elegiste»; «formulario de registro»;
+  «por ejemplo:» en lugar de «p. ej.:» en los tres bloques (el iii no venía completo en la tabla; se cambió igual para que coincida); bloque iii «…el problema, y explica cómo funciona».
 
 ## Efectos agregados (2 oct 2026)
 - **Intro**: el globo del logo (`img/intro-trazo.webp`, sacado de LOGO_MAKER) se dibuja y se abre la página. Solo la primera visita; para verla otra vez: `index.html?intro`.
