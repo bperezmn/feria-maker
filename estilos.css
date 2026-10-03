@@ -98,15 +98,12 @@ strong { font-weight: 700; }
 .titulo-lima { color: var(--lima); font-size: clamp(30px, 3.13vw, 60px); line-height: 1.1; max-width: 12em; }
 .bajada { margin-top: 0.4em; font-size: clamp(19px, 1.5vw, 29px); }
 .mecanica-rejilla { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.3vw, 44px); margin-top: clamp(28px, 2.9vw, 56px); align-items: stretch; }
+.forma, .nota { font-size: clamp(16px, 1.15vw, 22px); line-height: 1.35; } /* un solo tamaño en todos los textos de la sección */
 .forma { display: flex; flex-direction: column; gap: 0.8em; min-height: clamp(260px, 27.5vw, 530px); padding: clamp(80px, 5.7vw, 108px) clamp(20px, 1.6vw, 32px) clamp(22px, 2vw, 38px); color: var(--tinta); }
 .ficha { position: absolute; left: clamp(10px, 0.8vw, 16px); top: clamp(10px, 0.8vw, 16px); display: grid; place-items: center; width: clamp(56px, 3.5vw, 66px); aspect-ratio: 1; border-radius: 50%; background: var(--lima); color: var(--verde-noche); font-weight: 700; font-size: clamp(34px, 2.6vw, 50px); line-height: 1; box-shadow: var(--sombra-boton); }
-.forma .forma-texto { font-size: clamp(18px, 1.5vw, 28px); line-height: 1.25; }
-.forma h3 { font-size: clamp(17px, 1.15vw, 22px); line-height: 1.25; }
-.forma p { font-size: clamp(16px, 1.05vw, 20px); }
+.forma h3 { font-size: 1em; line-height: 1.25; }
 .forma .boton { margin-top: auto; align-self: flex-start; font-size: clamp(15px, 1vw, 19px); }
 .nota { display: grid; align-content: center; gap: 1.1em; padding: clamp(26px, 1.7vw, 34px) clamp(22px, 1.6vw, 32px); color: var(--tinta); }
-.nota p { font-size: clamp(16px, 1.15vw, 22px); }
-.importante { font-size: clamp(15px, 0.95vw, 18px) !important; }
 .importante span { color: var(--verde-numero); }
 
 /* ---------- Calendario ---------- */
@@ -303,7 +300,7 @@ strong { font-weight: 700; }
 .pin-sede i { position: absolute; left: -2.6em; top: -0.9em; width: 5.2em; height: 1.8em; border: 3.5px solid var(--verde-numero); border-radius: 50%; box-shadow: 0 0 12px rgba(132, 195, 65, 0.75), inset 0 0 8px rgba(132, 195, 65, 0.5); opacity: 0.6; transform: scale(0.6); font-size: clamp(10px, 0.85vw, 16px); }
 .pin-etiqueta { position: absolute; left: 40.3%; top: 47.1%; translate: 0 -50%; padding: 0.3em 0.75em; border-radius: 999px; background: var(--verde-noche); color: var(--lima); font-size: clamp(10px, 0.82vw, 15px); font-weight: 600; white-space: nowrap; box-shadow: var(--sombra-boton); pointer-events: none; }
 
-/* ---------- Página de Avisos de Privacidad ---------- */
+/* ---------- Página del Aviso de privacidad ---------- */
 .pagina-aviso { background: var(--verde-claro); }
 .aviso-cabeza { display: grid; justify-items: center; gap: clamp(14px, 1.3vw, 24px); padding: clamp(26px, 2.4vw, 46px) 20px clamp(30px, 2.8vw, 54px); text-align: center; }
 .aviso-logo { border-radius: 50%; }

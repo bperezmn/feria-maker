@@ -54,7 +54,14 @@ Segunda tabla (filas 13-25):
 - Áreas: «La lista definitiva de conferencistas…».
 - Categorías: Creatividad «El proyecto destaca…»; 100 % Maker «reciclados, reutilizados o reimaginados por encima de las piezas compradas».
 - Bases: «(4.º, 5.º y 6.º grados)»; «por un máximo de cuatro alumnos»; inciso b «relacionado con el tema que elegiste»; «formulario de registro»;
-  «por ejemplo:» en lugar de «p. ej.:» en los tres bloques (el iii no venía completo en la tabla; se cambió igual para que coincida); bloque iii «…el problema, y explica cómo funciona».
+  «por ejemplo:» en lugar de «p. ej.:» en los tres bloques; bloque iii «…el problema, y explica cómo funciona».
+
+Tercera tabla (filas 26-33):
+- Bases, bloque iii: «(por ejemplo: Desarrollaremos…)» (ya estaba).
+- Sede: «Tecnológico de Monterrey, campus Ciudad de México» (también en la descripción de la página y en el texto alternativo del mapa); etiqueta del mapa «Aquí será la Feria».
+- Pie: «Feria Maker UNOi · 24 de abril de 2027» y enlace «Aviso de privacidad» (también el título de esa página).
+- Mecánica: todos los textos de las tarjetas con el mismo tamaño (`.forma, .nota` en `estilos.css`); los botones conservan el tamaño de los demás botones del sitio.
+- Pendiente: foto del Tec de Monterrey en la Sede (fila 32) y «la foto que envió Vero» (fila 33).
 
 ## Efectos agregados (2 oct 2026)
 - **Intro**: el globo del logo (`img/intro-trazo.webp`, sacado de LOGO_MAKER) se dibuja y se abre la página. Solo la primera visita; para verla otra vez: `index.html?intro`.
