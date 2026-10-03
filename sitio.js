@@ -76,12 +76,11 @@
   }
 
   // Cuenta regresiva de la portada: cada meta se muestra hasta que llega su hora y entonces pasa a la siguiente.
-  // Kick Off (hasta el 15 oct, 17 h) → cierre de registro (hasta el 15 ene, 23:59 h) → Feria (hasta el 24 abr, 10 h).
+  // Cierre de registro (hasta el 15 ene, 23:59 h) → Feria (hasta el 24 abr, 10 h). Sin Kick Off: la página se publica ese día.
   // Horas del centro de México (UTC−6 todo el año, sin horario de verano).
   const cuenta = document.querySelector('.cuenta');
   if (cuenta) {
     const METAS = [
-      { cuando: Date.parse('2026-10-15T17:00:00-06:00'), titulo: 'Faltan para el <strong>Kick Off</strong>', fecha: '15 de octubre · 17:00 h (Tiempo del Centro)' },
       { cuando: Date.parse('2027-01-15T23:59:00-06:00'), titulo: 'Faltan para el <strong>cierre de registro</strong>', fecha: '15 de enero de 2027 · 23:59 h (Tiempo del Centro)' },
       { cuando: Date.parse('2027-04-24T10:00:00-06:00'), titulo: 'Faltan para la <strong>Feria Maker</strong>', fecha: '24 de abril de 2027 · 10:00 h (Tiempo del Centro)' },
     ];
