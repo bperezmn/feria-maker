@@ -69,6 +69,7 @@ Tercera tabla (filas 26-33):
   se cierra con la ×, con Esc o con un clic fuera, y al cerrar se pausa. Sin JS, el botón abre el archivo de video.
 
 Calendario, paso 4: «a más tardar el 15 de enero de 2027 a las 23:59 h» (coincide con el cierre de registro del contador).
+Calendario, paso 10: el montaje de los stands el 23 de abril empieza a las **16:00 h** (antes 18:15 h).
 
 ## Efectos agregados (2 oct 2026)
 - **Intro**: el globo del logo (`img/intro-trazo.webp`, sacado de LOGO_MAKER) se dibuja y se abre la página. Solo la primera visita; para verla otra vez: `index.html?intro`.
