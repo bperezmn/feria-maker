@@ -70,6 +70,7 @@ Tercera tabla (filas 26-33):
 Calendario, paso 4: «a más tardar el 15 de enero de 2027 a las 23:59 h» (coincide con el cierre de registro del contador).
 Calendario, paso 10: el montaje de los stands el 23 de abril empieza a las **16:00 h** (antes 18:15 h).
 Cuarta ronda (6 oct): paso 4 con «(Tiempo del Centro)» tras las 23:59 h; Mecánica, forma 2: «…por un proyecto de primaria alta, secundaria o híbrido (primaria alta y secundaria). El equipo deberá estar integrado por un máximo de 4 estudiantes participantes, 1 docente y 1 Maker Xpert.»; paso 8: hotel Fiesta Inn Periférico Sur con su dirección (ya no «por confirmar»); Bases, inciso b: «…que impacte a tu comunidad y que quieras solucionar».
+Bases (6 oct): el último párrafo antes de los pasos ahora dice «Para desarrollar tu proyecto maker, sigue estos pasos que te guiarán desde la idea hasta su realización.» (antes «Realizar tu proyecto Maker es muy sencillo; guíate con los siguientes pasos:»).
 Sede: la foto del Tec ahora es un carrusel de dos fotos; la segunda es el jardín del campus con la carpa de la Feria (`insumos/cliente/FOTO_SEDE_JARDIN.webp` → `img/sede-jardin*.webp`). Se desliza con el dedo, con las flechas, con los puntos y con las flechas del teclado, y da la vuelta al llegar al final. No cambia sola. Para agregar otra foto: un `.carrusel-slide` más en `index.html` y un punto más en `.carrusel-puntos`.
 
 ## Efectos agregados (2 oct 2026)
