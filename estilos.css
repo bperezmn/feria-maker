@@ -164,8 +164,26 @@ html:has(.modal-video[open]) { overflow: hidden; } /* la página no se mueve det
 .sede-texto { display: grid; justify-items: start; gap: 0.9em; font-size: clamp(18px, 1.5vw, 29px); line-height: 1.3; }
 .sede address { font-style: normal; }
 .sede .boton { font-size: clamp(15px, 1vw, 19px); }
-.sede-foto { margin: 0; border-radius: 6px; overflow: hidden; box-shadow: var(--sombra); }
+.sede-foto { position: relative; margin: 0; border-radius: 6px; overflow: hidden; box-shadow: var(--sombra); }
 .sede-foto img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+
+/* ---------- Carrusel de la sede (se desliza con scroll-snap; sitio.js agrega flechas, puntos y teclado) ---------- */
+.carrusel-pista { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; }
+.carrusel-pista::-webkit-scrollbar { display: none; }
+.carrusel-pista:focus-visible { outline-offset: -4px; }
+.carrusel-slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+.carrusel-flecha { position: absolute; top: 50%; translate: 0 -50%; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: var(--lima); color: var(--verde-noche); cursor: pointer; box-shadow: var(--sombra-boton); transition: filter 0.15s ease, scale 0.15s ease; }
+.carrusel-flecha:hover { filter: brightness(1.07); scale: 1.06; }
+.carrusel-flecha svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+.carrusel-ant { left: 12px; }
+.carrusel-sig { right: 12px; }
+.carrusel-puntos { position: absolute; left: 50%; bottom: 12px; translate: -50% 0; display: flex; padding: 3px 8px; border-radius: 999px; background: rgba(26, 47, 43, 0.62); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.carrusel-puntos button { display: grid; place-items: center; width: 28px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
+.carrusel-puntos button::before { content: ""; width: 10px; height: 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.7); transition: width 0.25s ease, background 0.25s ease; }
+.carrusel-puntos button[aria-current="true"]::before { width: 22px; background: var(--lima); }
+.carrusel-flecha:focus-visible, .carrusel-puntos button:focus-visible { outline: 3px solid var(--blanco); outline-offset: 2px; box-shadow: 0 0 0 6px var(--verde-noche); }
+@media (max-width: 760px) { .carrusel-flecha { width: 40px; height: 40px; } .carrusel-ant { left: 8px; } .carrusel-sig { right: 8px; } }
+@media (prefers-reduced-motion: reduce) { .carrusel-flecha, .carrusel-puntos button::before { transition: none; } }
 
 /* ---------- Pie ---------- */
 .pie { display: grid; justify-items: center; gap: 22px; padding: clamp(28px, 1.8vw, 36px) 20px clamp(36px, 2.2vw, 44px); text-align: center; }

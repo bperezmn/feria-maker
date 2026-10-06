@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap">
-<link rel="stylesheet" href="estilos.css?v=19">
+<link rel="stylesheet" href="estilos.css?v=20">
 <link rel="stylesheet" href="efectos.css?v=8">
 <script>
 (function () {
@@ -233,9 +233,25 @@
         <address>Prol. Canal de Miramontes, Coapa, San Bartolo el Chico, Tlalpan, 14380 Ciudad de México.</address>
         <a class="boton boton--lima" href="https://www.google.com/maps/search/?api=1&amp;query=Tecnol%C3%B3gico+de+Monterrey+campus+Ciudad+de+M%C3%A9xico%2C+Prol.+Canal+de+Miramontes%2C+Coapa%2C+San+Bartolo+el+Chico%2C+Tlalpan%2C+14380+Ciudad+de+M%C3%A9xico" target="_blank" rel="noopener">Cómo llegar<span class="sr"> (se abre en otra pestaña)</span></a>
       </div>
-      <figure class="sede-foto">
-        <img src="img/sede-tec.webp?v=1" srcset="img/sede-tec-movil.webp?v=1 800w, img/sede-tec.webp?v=1 1600w" sizes="(max-width: 760px) 92vw, 45vw" width="1600" height="1200" alt="Edificio de vidrio del Tecnológico de Monterrey, campus Ciudad de México" loading="lazy">
-      </figure>
+      <!-- Carrusel de la sede: se desliza con el dedo; las flechas y los puntos los activa sitio.js -->
+      <div class="sede-foto carrusel" role="group" aria-roledescription="carrusel" aria-label="Fotos de la sede">
+        <div class="carrusel-pista" tabindex="0" role="group" aria-label="Diapositivas">
+          <div class="carrusel-slide" role="group" aria-roledescription="diapositiva" aria-label="1 de 2">
+            <img src="img/sede-tec.webp?v=1" srcset="img/sede-tec-movil.webp?v=1 800w, img/sede-tec.webp?v=1 1600w" sizes="(max-width: 760px) 92vw, 45vw" width="1600" height="1200" alt="Edificio de vidrio del Tecnológico de Monterrey, campus Ciudad de México" loading="lazy">
+          </div>
+          <div class="carrusel-slide" role="group" aria-roledescription="diapositiva" aria-label="2 de 2">
+            <img src="img/sede-jardin.webp?v=1" srcset="img/sede-jardin-movil.webp?v=1 800w, img/sede-jardin.webp?v=1 1280w" sizes="(max-width: 760px) 92vw, 45vw" width="1280" height="853" alt="Jardín del campus con árboles, un edificio a la izquierda y, al fondo, una carpa verde con el logo de la Feria Maker" loading="lazy">
+          </div>
+        </div>
+        <div class="carrusel-ctl" hidden>
+          <button class="carrusel-flecha carrusel-ant" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></button>
+          <button class="carrusel-flecha carrusel-sig" type="button" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></button>
+          <div class="carrusel-puntos">
+            <button type="button" aria-label="Ver foto 1 de 2" aria-current="true"></button>
+            <button type="button" aria-label="Ver foto 2 de 2"></button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </main>
@@ -255,7 +271,7 @@
     Tu navegador no puede reproducir este video.
   </video>
 </dialog>
-<script src="sitio.js?v=8" defer></script>
+<script src="sitio.js?v=9" defer></script>
 <script src="efectos.js?v=11" defer></script>
 </body>
 </html>

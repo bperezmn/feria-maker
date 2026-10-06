@@ -131,4 +131,38 @@
     };
     latir();
   }
+
+  // Carrusel de la sede: se desliza con el dedo (scroll-snap) y aquí se le suman flechas, puntos y teclado.
+  // Sin JS sigue siendo un carrusel deslizable; los controles están ocultos hasta este punto.
+  document.querySelectorAll('.carrusel').forEach((car) => {
+    const pista = car.querySelector('.carrusel-pista');
+    const ctl = car.querySelector('.carrusel-ctl');
+    const slides = car.querySelectorAll('.carrusel-slide');
+    if (!pista || !ctl || slides.length < 2) return;
+    const puntos = [...ctl.querySelectorAll('.carrusel-puntos button')];
+    const reducido = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let actual = 0;
+    const ir = (i) => {
+      const n = (i + slides.length) % slides.length; // da la vuelta: después de la última, la primera
+      pista.scrollTo({ left: n * pista.clientWidth, behavior: reducido.matches ? 'auto' : 'smooth' });
+    };
+    const marcar = () => {
+      const i = Math.min(slides.length - 1, Math.max(0, Math.round(pista.scrollLeft / pista.clientWidth)));
+      if (i === actual) return;
+      actual = i;
+      puntos.forEach((p, k) => (k === i ? p.setAttribute('aria-current', 'true') : p.removeAttribute('aria-current')));
+    };
+    let cuadro = 0;
+    pista.addEventListener('scroll', () => { cancelAnimationFrame(cuadro); cuadro = requestAnimationFrame(marcar); }, { passive: true });
+    ctl.querySelector('.carrusel-ant').addEventListener('click', () => ir(actual - 1));
+    ctl.querySelector('.carrusel-sig').addEventListener('click', () => ir(actual + 1));
+    puntos.forEach((p, k) => p.addEventListener('click', () => ir(k)));
+    pista.addEventListener('keydown', (e) => {
+      const destino = { ArrowLeft: actual - 1, ArrowRight: actual + 1, Home: 0, End: slides.length - 1 }[e.key];
+      if (destino === undefined) return;
+      e.preventDefault();
+      ir(destino);
+    });
+    ctl.hidden = false;
+  });
 })();
