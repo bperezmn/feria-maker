@@ -81,8 +81,8 @@
   const cuenta = document.querySelector('.cuenta');
   if (cuenta) {
     const METAS = [
-      { cuando: Date.parse('2027-01-15T23:59:00-06:00'), titulo: 'Faltan para el <strong>cierre de registro</strong>', fecha: '15 de enero de 2027 · 23:59 h (Tiempo del Centro)' },
-      { cuando: Date.parse('2027-04-24T10:00:00-06:00'), titulo: 'Faltan para la <strong>Feria Maker</strong>', fecha: '24 de abril de 2027 · 10:00 h (Tiempo del Centro)' },
+      { cuando: Date.parse('2027-01-15T23:59:00-06:00'), titulo: 'Faltan para el <strong>cierre de registro</strong>', fecha: '15 de enero de 2027 · 23:59\u00a0h (Tiempo del Centro)' },
+      { cuando: Date.parse('2027-04-24T10:00:00-06:00'), titulo: 'Faltan para la <strong>Feria Maker</strong>', fecha: '24 de abril de 2027 · 10:00\u00a0h (Tiempo del Centro)' },
     ];
     const CIERRE = Date.parse('2027-04-24T18:00:00-06:00');
     const titulo = cuenta.querySelector('.cuenta-titulo');
@@ -103,7 +103,7 @@
           meta = 'hoy';
           cuenta.classList.add('hoy');
           titulo.innerHTML = '¡Hoy es la <strong>Feria Maker UNOi 2027</strong>!';
-          fecha.textContent = 'De 10:00 a 18:00 h · Tecnológico de Monterrey, Ciudad de México';
+          fecha.textContent = 'De 10:00 a 18:00\u00a0h · Tecnológico de Monterrey, Ciudad de México';
         }
       } else {
         if (meta !== siguiente) {

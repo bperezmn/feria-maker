@@ -307,7 +307,7 @@ html:has(.modal-video[open]) { overflow: hidden; } /* la página no se mueve det
   background: rgba(26, 47, 43, 0.62); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(236, 252, 217, 0.08); }
 .cuenta-num { display: block; font-size: 28px; font-weight: 600; line-height: 1.05; font-variant-numeric: tabular-nums; color: var(--palido); }
 .cuenta-u { margin-top: 3px; color: var(--lima); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
-.cuenta-fecha { font-size: 13px; opacity: 0.8; }
+.cuenta-fecha { font-size: 15px; font-weight: 700; text-wrap: balance; }
 .cuenta.hoy .cuenta-cifras { display: none; }
 @media (max-width: 760px) { .cuenta { justify-items: center; text-align: center; } }
 @media (min-width: 1181px) {
@@ -318,7 +318,7 @@ html:has(.modal-video[open]) { overflow: hidden; } /* la página no se mueve det
   .cuenta-cifras li { min-width: 5vw; padding: 0.6vw 0.55vw 0.5vw; border-radius: 0.9vw; }
   .cuenta-num { font-size: 2.45vw; }
   .cuenta-u { margin-top: 0.2vw; font-size: max(10px, 0.68vw); }
-  .cuenta-fecha { font-size: max(12px, 0.86vw); }
+  .cuenta-fecha { max-width: 31vw; font-size: max(14px, 1.05vw); } /* la fecha del registro cabe en una línea; la del día de la Feria se parte en dos para no tocar el logo */
 }
 
 /* ---------- Página del Aviso de privacidad ---------- */
