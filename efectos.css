@@ -94,7 +94,8 @@ h2.revelar.visible { clip-path: inset(-10% -5% -25% -5%); }
 
 /* ---------- 3. Al pasar el mouse ---------- */
 /* Tarjetas: se elevan y se inclinan un poco hacia el mouse (JS pone --rx, --ry y la posición del brillo --gx, --gy). */
-.inclina { transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--sube, 0px)); transition: transform 0.5s var(--suave), box-shadow 0.5s var(--suave); transform-style: preserve-3d; }
+.inclina { transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--sube, 0px)); transition: transform 0.5s var(--suave), box-shadow 0.5s var(--suave); }
+/* Sin transform-style: preserve-3d a propósito: con él, Chrome a veces manda el clic a la tarjeta inclinada y no al botón que lleva dentro (Inscribe, Visitante). */
 .inclina.sobre { --sube: -6px; transition: transform 0.15s linear, box-shadow 0.5s var(--suave); box-shadow: 10px 22px 38px -10px rgba(0, 0, 0, 0.35); }
 .inclina::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.5s var(--suave);
   background: radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgba(132, 195, 65, 0.14), rgba(132, 195, 65, 0) 60%), radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 45%); }
