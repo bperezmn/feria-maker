@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap">
-<link rel="stylesheet" href="estilos.css?v=21">
+<link rel="stylesheet" href="estilos.css?v=22">
 <link rel="stylesheet" href="efectos.css?v=9">
 <script>
 (function () {
@@ -146,7 +146,7 @@
         <li class="paso"><img src="img/paso-05.webp?v=2" alt="" width="320" height="258" loading="lazy"><span class="paso-num">5</span><p>Los colegios y proyectos seleccionados recibirán un correo de confirmación el <strong>12 de febrero</strong>.</p></li>
         <li class="paso"><img src="img/paso-06.webp?v=2" alt="" width="320" height="273" loading="lazy"><span class="paso-num">6</span><p>El <strong>11 de marzo a las 16:00&nbsp;h</strong> (Tiempo del Centro), se llevará a cabo un webinar especial para los colegios seleccionados.</p></li>
         <li class="paso"><img src="img/paso-07.webp?v=2" alt="" width="320" height="188" loading="lazy"><span class="paso-num">7</span><p>Los equipos seleccionados <strong>viajarán por su cuenta a la Ciudad de México</strong> para participar en la Feria Maker UNOi.</p></li>
-        <li class="paso"><img src="img/paso-08.webp?v=2" alt="" width="320" height="264" loading="lazy"><span class="paso-num">8</span><p>Se contará con una tarifa preferencial en el Hotel Fiesta Inn Periférico Sur (Periférico Sur 5530, Pedregal de Carrasco, Coyoacán, 04700 Ciudad de México, CDMX). <strong>Reserva antes del 16 de abril.</strong></p></li>
+        <li class="paso"><img src="img/paso-08.webp?v=2" alt="" width="320" height="264" loading="lazy"><span class="paso-num">8</span><p>Se contará con una tarifa preferencial en el Hotel Fiesta Inn Periférico Sur.</p><button class="boton boton--oscuro paso-boton" type="button" aria-haspopup="dialog" aria-controls="modal-hotel">Más información</button><p><strong>Reserva antes del 16 de abril.</strong></p></li>
         <li class="paso"><img src="img/paso-09.webp?v=2" alt="" width="320" height="329" loading="lazy"><span class="paso-num">9</span><p>Durante la Feria Maker se llevarán a cabo <strong>conferencias y talleres</strong>, y podrá asistir toda la comunidad educativa del colegio.</p></li>
         <li class="paso"><img src="img/paso-10.webp?v=2" alt="" width="320" height="388" loading="lazy"><span class="paso-num">10</span><p>El <strong>23 de abril</strong> se llevará a cabo el montaje de los stands a partir de las <strong>16:00&nbsp;h</strong>.</p></li>
         <li class="paso paso--feria"><img src="img/paso-11.webp?v=2" alt="" width="320" height="320" loading="lazy"><span class="paso-num">11</span><p>El <strong>24 de abril de 10:00 a 18:00&nbsp;h</strong> se llevará a cabo la Feria Maker UNOi 2027.</p></li>
@@ -271,7 +271,41 @@
     Tu navegador no puede reproducir este video.
   </video>
 </dialog>
-<script src="sitio.js?v=10" defer></script>
+<!-- Paso 8: información del hotel (la abre el botón «Más información»; textos del documento «Hotel Fiesta Inn Periférico Sur.docx») -->
+<dialog class="modal-info" id="modal-hotel" aria-labelledby="t-hotel">
+  <button class="modal-cerrar" type="button" aria-label="Cerrar la información del hotel"></button>
+  <div class="modal-info-cuerpo">
+    <h2 id="t-hotel">Hotel Fiesta Inn Periférico Sur</h2>
+    <address>Periférico Sur 5530, Col. Pedregal de Carrasco, Coyoacán, C.P. 04700, Ciudad de México.</address>
+    <p>Tarifa por habitación sencilla o doble: <strong>$1,550.00&nbsp;MXN por noche</strong>, más impuestos (IVA e ISH) y propinas (botones y camaristas).</p>
+    <p>Clave de grupo: <strong>FERIA&nbsp;MAKER&nbsp;/&nbsp;G1XM0S</strong></p>
+    <h3>Notas:</h3>
+    <ul>
+      <li>Sujeto a disponibilidad y al tipo de habitación.</li>
+      <li>La tarifa aplica únicamente para estancias del 23 al 27 de abril de 2027.</li>
+      <li>Tarifa vigente hasta el 15 de abril de 2027.</li>
+    </ul>
+    <h3>Proceso de reservación</h3>
+    <p>Hay dos formas de reservar:</p>
+    <ol class="modal-info-formas">
+      <li>
+        <p class="modal-info-forma">A través de la Central de Reservaciones</p>
+        <p>Cada participante deberá mencionar que desea realizar una reservación con la tarifa del grupo “FERIA&nbsp;MAKER&nbsp;/&nbsp;G1XM0S” en el hotel Fiesta Inn Periférico Sur.</p>
+        <p>Central de Reservaciones:</p>
+        <ul>
+          <li>Ciudad de México: <a href="tel:+525553266900">55&nbsp;5326&nbsp;6900</a></li>
+          <li>Interior de la República: <a href="tel:+528005045000">800&nbsp;504&nbsp;5000</a> (sin costo)</li>
+        </ul>
+      </li>
+      <li>
+        <p class="modal-info-forma">A través del enlace de reservación del grupo</p>
+        <p>Al ingresar al enlace, la clave de grupo y el hotel ya aparecen precargados. Solo deberás seleccionar las fechas de estancia, el número de habitaciones y el número de huéspedes para consultar la disponibilidad.</p>
+        <a class="boton boton--lima" href="https://www.corpo-rate.com/login?groupId=G1XM0S@SUR" target="_blank" rel="noopener">Reserva aquí.<span class="sr"> Reservación del grupo en el hotel (se abre en otra pestaña)</span></a>
+      </li>
+    </ol>
+  </div>
+</dialog>
+<script src="sitio.js?v=11" defer></script>
 <script src="efectos.js?v=11" defer></script>
 </body>
 </html>

@@ -63,6 +63,18 @@
     modal.addEventListener('close', () => { video.pause(); abreVideo.focus(); });
   }
 
+  // Paso 8, «Más información»: abre la información del hotel en una ventana dentro de la página.
+  // Se cierra con la ×, con Esc o con un clic fuera; al cerrar, el foco regresa al botón.
+  const hotel = document.getElementById('modal-hotel');
+  const abreHotel = document.querySelector('[aria-controls="modal-hotel"]');
+  if (hotel && abreHotel) {
+    const cerrarHotel = () => (typeof hotel.close === 'function' ? hotel.close() : hotel.removeAttribute('open'));
+    abreHotel.addEventListener('click', () => (typeof hotel.showModal === 'function' ? hotel.showModal() : hotel.setAttribute('open', '')));
+    hotel.querySelector('.modal-cerrar').addEventListener('click', cerrarHotel);
+    hotel.addEventListener('click', (e) => { if (e.target === hotel) cerrarHotel(); });
+    hotel.addEventListener('close', () => abreHotel.focus());
+  }
+
   // Franja de categorías: se puede pausar (y reanudar) con su botón.
   const franja = document.querySelector('.franja');
   const pausa = franja && franja.querySelector('.franja-pausa');
